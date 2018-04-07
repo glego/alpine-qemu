@@ -1,0 +1,9 @@
+sudo: required
+language: bash
+    
+services:
+  - docker
+
+script: 
+  - docker build -t "glego/alpine-qemu:arm32v6-3.6" .
+  - docker run --rm "glego/alpine-qemu:arm32v6-3.6" /bin/sh -ec "echo Hello from Alpine !; set -x; uname -a; cat /etc/alpine-release"
