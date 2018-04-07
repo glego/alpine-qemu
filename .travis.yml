@@ -4,6 +4,9 @@ language: bash
 services:
   - docker
 
+before_install:
+  - wget https://github.com/multiarch/qemu-user-static/releases/download/v2.11.0/x86_64_qemu-arm-static.tar.gz
+
 script: 
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   - docker build -t "glego/alpine-qemu:arm32v6-3.6" .
